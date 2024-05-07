@@ -269,3 +269,95 @@ if __name__ == "__main__":
         print(e)
 
     exit(-2)
+
+"""
+$> py .\main.py -f bertrand -ln blanc -d
+002 - Bertrand Blanc, 408-222-1111, Mar. 13 1999
+    friend: Jane Doe, 408-222-0000, 03/01/2002
+    friend: Julia Amar, n/a, 02/12/1997
+    friend: Walter Fu, 999.345.1234, 4/23/2001
+004 - Damian Bern, 999.345.1234, 4/23/2001
+    friend: Walter Fu, 999.345.1234, 4/23/2001
+001 - Jane Doe, 408-222-0000, 03/01/2002
+    friend: Bertrand Blanc, 408-222-1111, Mar. 13 1999
+005 - Julia Amar, n/a, 02/12/1997
+    friend: Bertrand Blanc, 408-222-1111, Mar. 13 1999
+003 - Walter Fu, 999.345.1234, 4/23/2001
+    friend: Bertrand Blanc, 408-222-1111, Mar. 13 1999
+    friend: Damian Bern, 999.345.1234, 4/23/2001
+
+$> py .\main.py -f bertrand -ln blanc -h
+usage: main.py [-h] [--author] [--first-name FIRST_NAME] [--last-name LAST_NAME] [--add-profile dob:<str>,phone:<str>] [--remove-profile] [--modify-profile firstname|lastname|phone|dob:<str>]
+               [--add-friend firstname/lastname] [--remove-friend firstname/lastname] [--show] [--dump]
+
+manipulate social network data
+
+options:
+  -h, --help            show this help message and exit
+  --author              Author of the utility
+  --first-name FIRST_NAME, -fn FIRST_NAME
+                        firstname
+  --last-name LAST_NAME, -name LAST_NAME, -ln LAST_NAME
+                        last name
+  --add-profile dob:<str>,phone:<str>
+                        add a profile to the DB
+  --remove-profile      remove a profile from the DB
+  --modify-profile firstname|lastname|phone|dob:<str>
+                        modify data from a profile
+  --add-friend firstname/lastname
+                        firstname/lastname for the friend to add
+  --remove-friend firstname/lastname
+                        firstname/lastname for the friend to remove
+  --show, -s, --display
+                        display the data for the profile
+  --dump, -d            display all profiles
+
+Hope you like it
+
+$> py .\main.py -f bertrand -ln blanc -s
+Bertrand Blanc, 408-222-1111, Mar. 13 1999:
+   Jane Doe
+   Julia Amar
+   Walter Fu
+
+$> py .\main.py -f bertrand -ln blanc --remove-friend walter/fu
+$> py .\main.py -f bertrand -ln blanc -s
+Bertrand Blanc, 408-222-1111, Mar. 13 1999:
+   Jane Doe
+   Julia Amar
+
+$> py .\main.py -f walte -ln fu -s      
+"Walte Fu" not registered
+$> py .\main.py -f walter -ln fu -s
+Walter Fu, 999.345.1234, 4/23/2001:
+   Damian Bern
+
+$> py .\main.py -f bertrand -ln blanc --add-friend walter/fuu
+"Walter Fuu" not registered
+$> py .\main.py -f bertrand -ln blanc --add-friend walter/fu 
+$> py .\main.py -f walter -ln fu -s
+Walter Fu, 999.345.1234, 4/23/2001:
+   Bertrand Blanc
+   Damian Bern
+$> py .\main.py -f bertrand -ln blanc -s
+Bertrand Blanc, 408-222-1111, Mar. 13 1999:
+   Jane Doe
+   Julia Amar
+   Walter Fu
+
+$> py .\main.py -f bertrand -ln blanc -a
+usage: main.py [-h] [--author] [--first-name FIRST_NAME] [--last-name LAST_NAME] [--add-profile dob:<str>,phone:<str>] [--remove-profile] [--modify-profile firstname|lastname|phone|dob:<str>]
+               [--add-friend firstname/lastname] [--remove-friend firstname/lastname] [--show] [--dump]
+main.py: error: unrecognized arguments: -a
+
+$> py .\main.py -f bertrand -ln blanc --author
+Bertrand Blanc (Alan Turing)
+
+$> py .\main.py -f bertrand -ln blanc --add-friend walter/fuu
+"Walter Fuu" not registered
+$> py .\main.py -f bertrand -ln blanc -s
+Bertrand Blanc, 408-222-1111, Mar. 13 1999:
+   Jane Doe
+   Julia Amar
+   Walter Fu
+"""
