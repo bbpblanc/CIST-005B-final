@@ -1,0 +1,103 @@
+@startuml
+
+package profiles <<database>>{
+    map Profiles {
+        id =>
+        firstname =>
+        lastname =>
+        dob =>
+        phone =>
+    }
+    map Befriend {
+        id_f1 =>
+        id_f2 =>
+    }
+    Befriend -- Profiles
+}
+
+class Profiles {
+    - logger
+    - connection
+    - cursor
+
+    + __init__()
+    + __enter__()
+    + __exit__()
+
+    # _create()
+
+    + add_profile(Person)
+    + get_profile(Person)
+    + add_friend(Person, friend:Person)
+    + get_friends(Person)
+    + remove_profile(Person)
+    + remove_friend(Person, friend:Person)
+    + modify_profile(Person, field, value)
+    + dump()
+}
+
+class Person {
+    # _id
+    # firstname
+    # lastname
+    # phone
+    # dob
+}
+Person -- Profiles
+Profiles -- profiles
+
+class Main {
+    - logger
+    - parser
+    - args
+
+    # _parse()
+    # _check()
+    # _dispatch()
+    # _author()
+    # _add_profile()
+    # _remove_profile()
+    # _modify_profile()
+    # _add_friend()
+    # _remove_friend()
+    # _display()
+    # _dump()
+    # _terminate()
+}
+note right
+usage: main.py [-h] [&#45;&#45;author] [&#45;&#45;first-name FIRST_NAME] [&#45;&#45;last-name LAST_NAME]
+    [&#45;&#45;add-profile ADD_PROFILE] [&#45;&#45;remove-profile] [&#45;&#45;modify-profile MODIFY_PROFILE]
+    [&#45;&#45;add-friend ADD_FRIEND] [&#45;&#45;remove-friend REMOVE_FRIEND]
+    [&#45;&#45;show] [&#45;&#45;dump]
+
+manipulate social network data
+
+options:
+  -h, --help            show this help message and exit
+  --author              Author of the utility
+  --first-name FIRST_NAME, -fn FIRST_NAME
+                        firstname
+  --last-name LAST_NAME, -name LAST_NAME, -ln LAST_NAME
+                        last name
+  --add-profile dob:<str>,phone:<str>
+                        add a profile to the DB
+  --remove-profile      remove a profile from the DB
+  --modify-profile firstname|lastname|phone|dob:<str>
+                        modify data from a profile
+  --add-friend firstname/lastname
+                        firstname/lastname for the friend to add
+  --remove-friend firstname/lastname
+                        firstname/lastname for the friend to remove
+  &#45;&#45;show, -s, &#45;&#45;display
+                        display the data for the profile
+  --dump, -d            display all profiles
+
+Hope you like it
+
+end note
+
+
+
+Main o-- Profiles
+
+@enduml
