@@ -1,4 +1,4 @@
-# Final Project
+# Graphs & SQL
 
 ## Problem Statement
 The popular social network Facebook TM or Instagram was founded by Mark Zuckerberg and his classmates at Harvard University in 2004. At the time, he was a sophomore studying computer science.
