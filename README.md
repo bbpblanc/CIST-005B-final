@@ -6,7 +6,7 @@ The popular social network Facebook TM or Instagram was founded by Mark Zuckerbe
 Design and implement an application that maintains the data for a simple social network. Each person in the network should have a profile that contains the person’s name. Your application should allow a user to join the network, leave the network, create a profile, modify the profile, search for other profiles, and add and remove friends.
 
 A simple approach:
-- Use a graph data structure to design the network of your social media application. ( You can get an idea of the Chapter 12: Graphs Assignment) 
+- Use a graph data structure to design the network of your social media application.
 - Add profiles (or accounts) to the application (add a vertex to the graph). You can create a profile class with attributes like name, email, and phone number.  Then add the profiles to the graph.
 - Remove profiles from the application (remove a vertex from the graph.)
 - Create a friendship between two profiles. (Add an edge between two vertexes.)
